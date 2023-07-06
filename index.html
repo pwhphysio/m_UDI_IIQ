@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UDI-6 IIQ-7</title>
+	<style>
+		@font-face{
+			font-family: 'Source Code Pro';
+			font-weight: 300;
+			font-style: normal;
+			font-stretch: normal;
+			src: url('./WOFF2/TTF/SourceCodePro-Light.ttf.woff2') format('woff2'),
+				url('./WOFF/OTF/SourceCodePro-Light.otf.woff') format('woff'),
+				url('./OTF/SourceCodePro-Light.otf') format('opentype'),
+				url('./TTF/SourceCodePro-Light.ttf') format('truetype');
+		}
+			/*
+		body {
+			margin: 0;
+		}
+
+		div {
+			width: 100vw;
+			height: 100vh;
+		}
+		*/
+        
+		Legend{
+			font-weight: bold;
+			font-size: 35px;
+		}
+		html {
+    		background-color: rgb(208, 219, 233);
+      	}
+
+		h1 {
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			font-size: 45px;
+	
+		}
+
+		h2 {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+			font-size: 25px;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+
+		form {
+			margin: 10px;
+			max-width: auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 30px;
+			background-color: rgb(224, 233, 246);
+			line-height: 1.5;
+		}
+
+		input {
+			font-size: 30px;
+		}
+
+		p {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		input[type="radio"] {
+			margin-right: 10px;
+			margin-left: 15px;
+			transform: scale(1.5);
+		}
+
+		input[type="radio"]:last-child {
+			margin-right: 0;
+		}
+
+		button {
+			background-color: rgb(0, 145, 255);
+			color: white;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			font-size: 30px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		button[type="button"]:hover {
+			background-color: rgb(100, 182, 245);
+		}
+
+		input[type="reset"] {
+			background-color: rgb(61, 120, 165);
+			color: white;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			font-size: 30px;
+			display: block;
+			margin: 0 auto;
+			padding: 20px 33px;
+			margin-right: 0px;
+		}
+
+		input[type="reset"]:hover {
+			background-color: rgb(86, 146, 193);
+		}
+
+		.button-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 16px;
+		}
+
+		.btn-primary {
+			/* padding: 23px 33px; */
+			padding: 20px 33px;
+			margin-left: 40px;
+		}
+
+        .increase-font-size-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			padding: 11px 12px;
+			background-color: white;
+			color: black;
+			border-radius: 20px;
+        }
+
+		.decrease-font-size-btn{
+			position: absolute;
+			top: 10px;
+			right: 59px;
+			padding: 17px 17px;
+			background-color: white;
+			color: black;
+			border-radius: 20px;
+			font-size: 20px;
+        }
+
+		.button {
+			display: inline-block;
+		}
+
+		
+		#result {
+			margin-top: 20px;
+			font-size: 30px;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		#popup {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgb(232, 232, 176);
+			border-radius: 15px;
+			border: 1px solid black;
+			padding: 20px;
+			display: none;
+			font-size: 30px;
+			text-align: center;
+			max-width: 100%;
+			width: 70%;
+ 		 	max-height: 80%;
+  			overflow: auto;
+		}
+
+		.popup-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.popup-message {
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		.popup-button {
+			margin-top: 10px;
+			padding: 9px 15px;
+			border-radius: 13px;
+		}
+		
+        .center-cell {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .header2 {
+            text-align: right;
+        }
+                
+        .table2 {
+            line-height: 1;
+        }
+		
+		#udi_result {
+			margin-top: 20px;
+			font-size: 30px;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		#iiq_result {
+			font-size: 30px;
+			font-weight: bold;
+			text-align: center;
+		}
+
+        
+        /* for design for mobile version*/
+        form {
+			font-size: 60px;
+        }
+        legend {
+            font-size: 70px;
+        }
+        h1{
+            font-size: 80px;
+        }
+        h2{
+            font-size: 60px;
+        }
+        input[type="radio"] {
+            margin-right: 20px;
+            margin-left: 15px;
+            transform :scale(4);
+        }
+        button {
+            transform: scale(3);
+        }
+        .increase-font-size-btn {
+			transform: scale(2);
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+		.decrease-font-size-btn{
+			transform: scale(2);
+            margin-right: 65px;
+            margin-top: 20px;
+        }
+
+        #udi_result {
+            margin-top: 40px;
+            font-size: 60px;
+            font-weight: bold;
+		}
+
+		#iiq_result {
+            margin-top: 40px;
+            font-size: 60px;
+            font-weight: bold;
+		}
+        input[type="reset"] {
+			transform: scale(2);
+		}
+		.btn-primary {
+			transform: scale(2);
+            margin-left: 200px;
+
+		}
+        .popup-button {
+			margin-top: 10px;
+			padding: 9px 15px;
+			border-radius: 13px;
+            transform: scale(2);
+            margin-bottom: 40px;
+		}
+        .popup-message {
+			font-size: 60px;
+            line-height: 2;
+		}
+
+
+	</style>
+	<script text="text/javascript">
+        function showPopup(message) {
+			var popup = document.getElementById("popup");
+			var messageElement = popup.querySelector(".popup-message");
+			messageElement.innerHTML = message;
+			popup.style.display = "block";
+			return popup;
+		}
+
+		function hidePopup(popup) {
+			popup.style.display = "none";
+        
+        }
+
+		function runALLFunctions() {
+			calculateUDIscore(event);
+			calculateIIQscore(event);
+            totalpopup();
+		}
+
+        var totalUDIquestions = 0;
+		var totalUDIscore = 0;
+		var UDIscore = 0;
+
+		function calculateUDIscore(event) {
+			event.preventDefault(); // Prevent form submission
+			
+			var values = document.getElementsByClassName("udi_score");
+			totalUDIquestions = 0;
+			totalUDIscore = 0;
+			UDIscore = 0;
+
+			for(var i = 0; i < values.length; i++) {
+				if(values[i].checked) {
+					totalUDIscore += parseFloat(values[i].value);
+					totalUDIquestions++;
+				}
+			}
+		}
+
+        var totaliiqquestions = 0;
+		var totaliiqscore = 0;
+		var iiqscore = 0;
+
+		function calculateIIQscore() {
+			event.preventDefault(); // Prevent form submission
+			
+			var values = document.getElementsByClassName("iiq_score");
+			totaliiqquestions = 0;
+			totaliiqscore = 0;
+			iiqscore = 0;
+
+			for(var i = 0; i < values.length; i++) {
+				if(values[i].checked) {
+					totaliiqscore += parseFloat(values[i].value);
+					totaliiqquestions++;
+				}
+			}
+		}
+
+        function totalpopup() {
+			var totalnumberofquestions = totalUDIquestions + totaliiqquestions;
+
+			if (totalUDIquestions >= 4 && totaliiqquestions >= 5){
+				UDIscore = (totalUDIscore / totalUDIquestions) * 33.33;
+                iiqscore = (totaliiqscore / totaliiqquestions) * 33.33;
+
+                document.getElementById("udi_result").innerHTML = "非常感謝您完成了這份調查中所有的問題<br><br>請勿關閉此頁面，直至將頁面展示給物理治療師。";
+
+				//document.getElementById("udi_result").innerHTML = "非常感謝您完成了這份調查中所有的問題<br><br>請勿關閉此頁面，並將以下資料展示給物理治療師。<br><br> Your UDI-6 score is: " + Math.round(UDIscore);
+				//document.getElementById("iiq_result").innerHTML = "Your IIQ-7 score is:" + Math.round(iiqscore);
+                //document.getElementById("iiq_result").innerHTML = "Your IIQ-7 score is:" + Math.round(iiqscore)+ "<br><br>" +
+                //    "<table>" +
+                //    "  <tr>" +
+                //    "    <th>Table Header 1</th>" +
+                //    "    <th>Table Header 2</th>" +
+                //  "  </tr>" +
+                //"  <tr>" +
+                //    "    <td>Row 1, Cell 1</td>" +
+                //    "    <td>Row 1, Cell 2</td>" +
+                //    "  </tr>" +
+                //   "  <tr>" +
+                //    "    <td>Row 2, Cell 1</td>" +
+                //    "    <td>Row 2, Cell 2</td>" +
+                //    "  </tr>" +
+                //    "</table>";
+
+                document.getElementById("cell1").innerText = totalUDIscore;
+                document.getElementById("cell2").innerText = totaliiqscore;
+
+                document.getElementById("cell3").innerText = Math.round(UDIscore);
+                document.getElementById("cell4").innerText = Math.round(iiqscore);
+			
+                var popup = showPopup("非常感謝您完成了這份調查中所有的問題<br><br>請勿關閉此頁面，直至將頁面展示給物理治療師。");
+
+				//var popup = showPopup("非常感謝您完成了這份調查中所有的問題<br><br>請勿關閉此頁面，並將以下資料展示給物理治療師。<br><br> Your UDI-6 score is: " + Math.round(UDIscore) + "<br>"
+				//+ "Your IIQ-7 score is: " + Math.round(iiqscore)
+				//);
+			} else {
+				var failpopupcontent = "";
+
+				if (totalUDIquestions < 4){
+					document.getElementById("udi_result").innerHTML = "你在第一部份(小便困苦清單)尚有" + (6 - totalUDIquestions)+ "條問題未回答<br>";
+					failpopupcontent += "你在第一部份(小便困苦清單)尚有" + (6 - totalUDIquestions)+ "條問題未回答。<br>";
+				} else {
+					document.getElementById("udi_result").innerHTML = "";
+				}
+
+				if (totaliiqquestions < 5){
+					document.getElementById("iiq_result").innerHTML = "你在第二部份(小便失禁影響問卷)尚有" + (7 - totaliiqquestions)+ "條問題未回答<br>";
+					failpopupcontent += "你在第二部份(小便失禁影響問卷)尚有" + (7 - totaliiqquestions)+ "條問題未回答。<br>";
+				} else {
+					document.getElementById("iiq_result").innerHTML = "";
+				}
+
+				failpopupcontent += "請返回並繼續作答。"
+
+				var popup = showPopup(failpopupcontent);
+
+			}
+
+			var okButton = popup.querySelector(".popup-button");
+			okButton.addEventListener("click", function() {
+				hidePopup(popup);
+			});
+		}
+
+		function resetContent() {
+    		document.getElementById("udi_result").innerHTML = "";
+			document.getElementById("iiq_result").innerHTML = "";
+		}
+	</script>
+</head>
+<body>
+	<h1> Urogenital Distress Inventory Short Form (UDI – 6) & Incontinence Impact Questionnaire Short Form (IIQ – 7) </h1>
+    <h1>(Chinese Version)</h1>
+    <button class = "increase-font-size-btn" id="increase-font-button">大
+    </button>
+
+    <script>
+       // get the button element by its ID
+		var button = document.getElementById("increase-font-button");
+
+		// add an event listener to the button that increases the font size of all elements
+		button.addEventListener("click", function() {
+		// get all elements on the page
+		var elements = document.getElementsByTagName("*");
+
+		// loop through each element and increase its font size
+		for (var i = 0; i < elements.length; i++) {
+			var element = elements[i];
+			var tagName = element.tagName.toLowerCase();
+			var fontSize = window.getComputedStyle(element).getPropertyValue("font-size");
+			var newFontSize = parseFloat(fontSize) * 1.1;
+
+			// increase font size of text inputs, radio buttons, and labels
+			if ((tagName == "input" && element.type == "text") || (element.type == "radio")) {
+			element.style.fontSize = newFontSize + "px";
+			element.style.width = newFontSize - 15 + "px"; // added line to make radio buttons bigger
+			element.style.height = newFontSize - 15 + "px"; // added line to make radio buttons bigger
+			} else if (tagName == "label") {
+			element.style.fontSize = newFontSize + "px";
+			} else {
+			element.style.fontSize = newFontSize + "px";
+			}
+		}
+		});
+
+
+    </script>
+	<button class = "decrease-font-size-btn" id="decrease-font-button">小
+    </button>
+
+    <script>
+       // get the button element by its ID
+		var button = document.getElementById("decrease-font-button");
+
+		// add an event listener to the button that decreases the font size of all elements
+		button.addEventListener("click", function() {
+			// get all elements on the page
+			var elements = document.getElementsByTagName("*");
+
+			// loop through each element and decrease its font size
+			for (var i = 0; i < elements.length; i++) {
+				var element = elements[i];
+				var tagName = element.tagName.toLowerCase();
+				var fontSize = window.getComputedStyle(element).getPropertyValue("font-size");
+				var newFontSize = parseFloat(fontSize) * 0.9;
+
+				// decrease font size of text inputs, radio buttons, and labels
+				if ((tagName == "input" && element.type == "text") || (element.type == "radio")) {
+					element.style.fontSize = newFontSize + "px";
+					element.style.width = newFontSize - 15 + "px"; // added line to make radio buttons smaller
+					element.style.height = newFontSize - 15 + "px"; // added line to make radio buttons smaller
+				} else if (tagName == "label") {
+					element.style.fontSize = newFontSize + "px";
+				} else {
+					element.style.fontSize = newFontSize + "px";
+				}
+			}
+		});
+
+    </script>
+    <h2> 威爾斯親王醫院 物理治療部</h2>
+	<form>
+
+
+		<fieldset>
+			<legend>第一部分: UDI – 6 小便困苦清單</legend>
+            <p><strong>你有沒有經歷過以下的症狀?</strong></p>
+            <p><strong>如果有, 這些症狀有多困擾你?</strong></p>
+			<p>1. 經常去小便</p>
+			<input type="radio" name="section1" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section1" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section1" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section1" value="3" class="udi_score"> 嚴重
+			<br><br><p>2. 由急迫感覺引致的失禁</p>
+			<input type="radio" name="section2" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section2" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section2" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section2" value="3" class="udi_score"> 嚴重
+			<br><br><p>3. 由活動、咳嗽或打噴嚏引致的失禁</p>
+			<input type="radio" name="section3" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section3" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section3" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section3" value="3" class="udi_score"> 嚴重
+			<br><br><p>4. 小量的小便失禁(例如數滴)</p>
+			<input type="radio" name="section4" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section4" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section4" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section4" value="3" class="udi_score"> 嚴重
+			<br><br><p>5. 有困難去排清小便</p>
+			<input type="radio" name="section5" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section5" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section5" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section5" value="3" class="udi_score"> 嚴重
+			<br><br><p>6. 小腹或生殖器官部位的疼痛或不適</p>
+			<input type="radio" name="section6" value="0" class="udi_score"> 完全沒有<br>
+			<input type="radio" name="section6" value="1" class="udi_score"> 輕微<br>
+			<input type="radio" name="section6" value="2" class="udi_score"> 中度<br>
+			<input type="radio" name="section6" value="3" class="udi_score"> 嚴重<br>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend>第二部分: IIQ – 7 小便失禁影響問卷</legend>
+			<p><strong>你的小便失禁有否影響你的:</p></strong>
+			<p>1. 做家務的能力 (例如: 煮飯、清潔家居或洗衣等)</p>
+			<input type="radio" name="section20" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section20" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section20" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section20" value="3" class="iiq_score"> 嚴重
+			<br><br><p>2. 體育康樂 (例如: 步行、游泳或做運動等)</p>
+			<input type="radio" name="section21" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section21" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section21" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section21" value="3" class="iiq_score"> 嚴重
+			<br><br><p>3. 娛樂活動 (例如: 睇戲、聽演唱會等)</p>
+			<input type="radio" name="section22" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section22" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section22" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section22" value="3" class="iiq_score"> 嚴重
+			<br><br><p>4. 搭車或駕駛車輛外出半小時或以上的能力</p>
+			<input type="radio" name="section23" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section23" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section23" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section23" value="3" class="iiq_score"> 嚴重
+			<br><br><p>5. 外出參與社交活動</p>
+			<input type="radio" name="section24" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section24" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section24" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section24" value="3" class="iiq_score"> 嚴重
+			<br><br><p>6. 心理健康 (如精神緊張、抑鬱或憤怒)</p>
+			<input type="radio" name="section25" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section25" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section25" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section25" value="3" class="iiq_score"> 嚴重
+			<br><br><p>7. 沮喪感覺</p>
+			<input type="radio" name="section26" value="0" class="iiq_score"> 完全沒有<br>
+			<input type="radio" name="section26" value="1" class="iiq_score"> 輕微<br>
+			<input type="radio" name="section26" value="2" class="iiq_score"> 中度<br>
+			<input type="radio" name="section26" value="3" class="iiq_score"> 嚴重<br>
+		</fieldset>
+			
+
+        <br><br>
+		<div id="udi_result"></div>
+		<div id="iiq_result"></div>
+		<br>
+		<div class="button-container">
+			<input type="reset" value="重設" onclick="resetContent()"> 
+			<button type="button" class="btn-primary" onclick="runALLFunctions(event)">提交</button>
+		</div>
+		<br>
+		<div class="centered-text">
+			<h1>謝謝您完成問卷</h1>
+		</div>
+
+        <br>
+        <p><以下資料僅供內部人員參考></p>
+
+        <table>
+            <tr>
+              <th></th>
+              <th>&nbsp;&nbsp;&nbsp;UDI-6</th>
+              <th>&nbsp;&nbsp;IIQ-7</th>
+            </tr>
+            <tr>
+              <td>Sum of Score</td>
+              <td id="cell1" class="center-cell"></td>
+              <td id="cell2" class="center-cell"></td>
+            </tr>
+            <tr>
+              <td>UDI / IIQ Score</td>
+              <td id="cell3" class="center-cell"></td>
+              <td id="cell4" class="center-cell"></td>
+            </tr>
+        </table>
+
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <p class="table2">UDI-6</p>
+                    <p class="table2">Item 1,2: Irritative symptoms</p>
+                    <p class="table2">Item 3,4: Stress symptoms</p>
+                    <p class="table2">Item 5,6: Obstructive / Discomfort symptoms</p>
+                </td>
+                <td>
+                    <p class="table2">TS > 33.33: Higher distress caused by UI symptoms</p>
+                    <p class="table2"></p>
+                    <p class="table2">TS < 33.33: Lower</p>
+                </td>
+              <td id="cell2" class="center-cell"></td>
+            </tr>
+            <tr>
+              <td>
+                    <br>
+                    <p class="table2">IIQ-7</p>
+                    <p class="table2">Item 1,2: Physical Activity</p>
+                    <p class="table2">Item 3,4: Travel</p>
+                    <p class="table2">Item 5: Social relationships</p>
+                    <p class="table2">Item 6,7: Emotional health</p>
+              </td>
+              <td>
+                    <br>
+                    <p class="table2">TS > 9: Higher impact of UI on health-related quality of life</p>
+                    <p class="table2"></p>
+                    <p class="table2">TS < 9: Lower</p>
+              </td>
+              <td id="cell4" class="center-cell"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>     </td>
+            </tr>
+        </table>
+          
+
+
+	</form>
+    <div id="popup">
+		<div class="popup-content">
+		  <div class="popup-message"></div>
+		  <button class="popup-button">確定</button>
+		</div>
+	</div>
+	<br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
