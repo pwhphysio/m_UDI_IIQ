@@ -174,7 +174,7 @@
 			font-size: 30px;
 			text-align: center;
 			max-width: 100%;
-			width: 70%;
+			width: 80%;
  		 	max-height: 80%;
   			overflow: auto;
 		}
@@ -221,6 +221,16 @@
 			font-weight: bold;
 			text-align: center;
 		}
+
+		table {
+			border-collapse: collapse; /* Optional: Collapses the borders into a single line */
+		}
+
+		table, th, td {
+			border: 1px solid black; /* Applies a solid black border */
+			padding: 5px; /* Optional: Adds some padding to the cells */
+		}
+		
 
         
         /* for design for mobile version*/
@@ -420,6 +430,10 @@
 		function resetContent() {
     		document.getElementById("udi_result").innerHTML = "";
 			document.getElementById("iiq_result").innerHTML = "";
+			document.getElementById("cell1").innerHTML = "";
+			document.getElementById("cell2").innerHTML = "";
+			document.getElementById("cell3").innerHTML = "";
+			document.getElementById("cell4").innerHTML = "";
 		}
 	</script>
 </head>
@@ -608,7 +622,7 @@
               <td id="cell4" class="center-cell"></td>
             </tr>
         </table>
-
+	<!--
         <br>
         <table>
             <tr>
@@ -648,7 +662,45 @@
                 <td>     </td>
             </tr>
         </table>
-          
+	-->
+	<br>
+
+		<table>
+			<tr>
+				<td>
+					<p class="table2"><strong>UDI-6</strong></p>
+					<p class="table2">Item 1,2: Irritative symptoms</p>
+					<p class="table2">Item 3,4: Stress symptoms</p>
+					<p class="table2">Item 5,6: Obstructive / Discomfort symptoms</p>
+					<p></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="table2">TS > 33.33: Higher distress caused by UI symptoms</p>
+					<p class="table2"></p>
+					<p class="table2">TS < 33.33: Lower</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="table2"><strong>IIQ-7</strong></p>
+                    <p class="table2">Item 1,2: Physical Activity</p>
+                    <p class="table2">Item 3,4: Travel</p>
+                    <p class="table2">Item 5: Social relationships</p>
+                    <p class="table2">Item 6,7: Emotional health</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="table2">TS > 9: Higher impact of UI on health-related quality of life</p>
+                    <p class="table2"></p>
+                    <p class="table2">TS < 9: Lower</p>
+				</td>
+			</tr>
+		</table>
+
+	
 
 
 	</form>
